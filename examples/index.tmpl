@@ -1,0 +1,17 @@
+{
+    body => \'index.tmpl',
+    title => '',
+
+    plugins => [
+        qw/Barcode/
+    ],
+
+    plug_barcode => {
+        format => 'png',
+        no_text => 0,
+        height => 20,
+        file => 'bar.png',
+        code => '12345678901',
+    },
+}
+
