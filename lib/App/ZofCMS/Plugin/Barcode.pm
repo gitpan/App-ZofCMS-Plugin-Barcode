@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::Barcode;
 use warnings;
 use strict;
 
-our $VERSION = '0.0102';
+our $VERSION = '0.0103';
 
 use GD::Barcode;
 use base 'App::ZofCMS::Plugin::Base';
