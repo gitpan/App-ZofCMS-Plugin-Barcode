@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::Barcode;
 use warnings;
 use strict;
 
-our $VERSION = '0.0101';
+our $VERSION = '0.0102';
 
 use GD::Barcode;
 use base 'App::ZofCMS::Plugin::Base';
@@ -145,7 +145,17 @@ run anything that needs to be run before that point.
         height  => 50,     # default
     },
 
-B<Mandatory>. Specifies plugin's options. Takes a hashref as a value. Possible keys/values
+    # set config with a sub
+    plug_barcode => sub {
+        my ( $t, $q, $config ) = @_;
+    }
+
+B<Mandatory>. Specifies plugin's options. Takes a hashref or a subref as a value. If subref is
+specified,
+its return value will be assigned to C<plug_barcode> as if it was already there. If sub returns
+an C<undef>, then plugin will stop further processing. The C<@_> of the subref will
+contain (in that order): ZofCMS Tempalate hashref, query parameters hashref and
+L<App::ZofCMS::Config> object. Possible keys/values of the hashref
 are as follows:
 
 =head3 C<code>
