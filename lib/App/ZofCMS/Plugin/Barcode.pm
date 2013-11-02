@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::Barcode;
 use warnings;
 use strict;
 
-our $VERSION = '0.0103';
+our $VERSION = '0.0104';
 
 use GD::Barcode;
 use base 'App::ZofCMS::Plugin::Base';
@@ -70,6 +70,8 @@ sub _do {
 1;
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
 App::ZofCMS::Plugin::Barcode - plugin to generate various bar codes
@@ -123,9 +125,12 @@ L<App::ZofCMS::Template>
     ],
 
 B<Mandatory>.
-You need to add the plugins to the list of plugins to execute. B<Note:> if you're outputting
-directly to the browser instead of saving the barcode into a file, the B<plugin will call
-exit() as soon as it finishes print()ing the image UNLESS an error occured>, so make sure to
+You need to add the plugins to the list of plugins to execute. B<Note:>
+if you're outputting
+directly to the browser instead of saving the barcode into a file, the
+B<plugin will call
+exit() as soon as it finishes print()ing the image UNLESS an error
+occurred>, so make sure to
 run anything that needs to be run before that point.
 
 =head2 C<plug_barcode>
@@ -193,7 +198,7 @@ or an empty string, plugin will stop further processing (no exit()s)
 B<Optional>. Takes a string that represents the name of the file (relative to C<index.pl>)
 into which to save the image. When is not defined (or set to an empty string) the plugin
 will print out the right C<Content-type> header and output the image right into the browser
-B<and then will call exit() UNLESS an error occured> . Plugin will B<NOT> call C<exit()> if
+B<and then will call exit() UNLESS an error occurred> . Plugin will B<NOT> call C<exit()> if
 saving to the file. B<By default> is not specified (output barcode image directly to the
 browser).
 
@@ -277,7 +282,7 @@ generated barcode image. B<Defaults to:> C<50>
     </tmpl_if>
 
 In an error occurs while generating the barcode (i.e. wrong code length was specified
-or some I/O error occured if saving to a file), the plugin will set
+or some I/O error occurred if saving to a file), the plugin will set
 the C<< $t->{t}{plug_barcode_error} >> (where C<$t> is ZofCMS Template hashref)
 to the error message.
 
